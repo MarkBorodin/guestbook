@@ -49,6 +49,14 @@ class Comment
     private $photoFilename;
 
 
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedAtValue()
+    {
+        $this->createdAt = new \DateTime();
+    }
+
     public function __toString(): string
     {
         return (string)$this->getEmail();
