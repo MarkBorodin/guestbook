@@ -3,21 +3,28 @@
 namespace App\Command;
 
 use App\Repository\CommentRepository;
+use App\Repository\EventsRepository;
+use MyBuilder\Bundle\CronosBundle\Annotation\Cron;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
+/**
+ * @Cron(minute="/2", noLogs=true)
+ */
 class CommentCleanupCommand extends Command
 {
     private $commentRepository;
+    private $eventsRepository;
 
     protected static $defaultName = 'app:comment:cleanup';
 
-    public function __construct(CommentRepository $commentRepository)
+    public function __construct(CommentRepository $commentRepository, EventsRepository $eventsRepository)
     {
         $this->commentRepository = $commentRepository;
+        $this->eventsRepository = $eventsRepository;
 
         parent::__construct();
     }
@@ -43,6 +50,10 @@ class CommentCleanupCommand extends Command
         }
 
         $io->success(sprintf('Deleted "%d" old rejected/spam comments.', $count));
+
+
+        // custom (add event)
+        $this->eventsRepository->createEvent('some event', 'the event happened', true);
 
         return 0;
     }

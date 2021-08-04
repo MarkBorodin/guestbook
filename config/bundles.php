@@ -14,4 +14,5 @@ return [
     EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle::class => ['all' => true],
     Twig\Extra\TwigExtraBundle\TwigExtraBundle::class => ['all' => true],
     Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => ['all' => true],
+    MyBuilder\Bundle\CronosBundle\MyBuilderCronosBundle::class => ['all' => true],
 ];

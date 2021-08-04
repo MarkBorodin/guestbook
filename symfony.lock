@@ -109,6 +109,12 @@
     "monolog/monolog": {
         "version": "2.3.2"
     },
+    "mybuilder/cronos": {
+        "version": "3.0.1"
+    },
+    "mybuilder/cronos-bundle": {
+        "version": "3.1.2"
+    },
     "nikic/php-parser": {
         "version": "v4.12.0"
     },

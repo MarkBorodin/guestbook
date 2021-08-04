@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f23f6b428e97a077cd36efe1a46c5250",
+    "content-hash": "d45c36d4c0302b0476f019721c616ef4",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -1956,6 +1956,128 @@
                 }
             ],
             "time": "2021-07-23T07:42:52+00:00"
+        },
+        {
+            "name": "mybuilder/cronos",
+            "version": "3.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mybuilder/cronos.git",
+                "reference": "7dc8270cbbb144c1b2fd5d989f1361813665c215"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mybuilder/cronos/zipball/7dc8270cbbb144c1b2fd5d989f1361813665c215",
+                "reference": "7dc8270cbbb144c1b2fd5d989f1361813665c215",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3",
+                "symfony/process": "~3.0|^4.0|^5.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.0",
+                "roave/security-advisories": "dev-master"
+            },
+            "suggest": {
+                "symfony/filesystem": "Allows using Symfony Filesystem"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MyBuilder\\Cronos\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Gavin Love",
+                    "homepage": "https://www.mybuilder.com"
+                },
+                {
+                    "name": "Keyvan Akbary",
+                    "homepage": "https://www.mybuilder.com"
+                }
+            ],
+            "description": "Configure Cron task through PHP",
+            "keywords": [
+                "cron",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/mybuilder/cronos/issues",
+                "source": "https://github.com/mybuilder/cronos/tree/3.0.1"
+            },
+            "time": "2020-05-11T12:49:54+00:00"
+        },
+        {
+            "name": "mybuilder/cronos-bundle",
+            "version": "3.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mybuilder/cronos-bundle.git",
+                "reference": "b384882f7ef51f9fc796802c44033ca1d66804d7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mybuilder/cronos-bundle/zipball/b384882f7ef51f9fc796802c44033ca1d66804d7",
+                "reference": "b384882f7ef51f9fc796802c44033ca1d66804d7",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/annotations": "1.*",
+                "mybuilder/cronos": "~3.0",
+                "php": ">=7.3",
+                "symfony/config": "~3.0||^4.0||^5.0",
+                "symfony/console": "~3.0||^4.0||^5.0",
+                "symfony/dependency-injection": "~3.0||^4.0||^5.0",
+                "symfony/framework-bundle": "~3.0||^4.0||^5.0",
+                "symfony/http-kernel": "~3.0||^4.0||^5.0",
+                "symfony/property-access": "~3.0||^4.0||^5.0",
+                "symfony/yaml": "~3.0||^4.0||^5.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~9.0",
+                "roave/security-advisories": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MyBuilder\\Bundle\\CronosBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Gavin Love",
+                    "homepage": "http://www.mybuilder.com"
+                },
+                {
+                    "name": "Keyvan Akbary",
+                    "homepage": "http://www.mybuilder.com"
+                }
+            ],
+            "description": "Symfony 3/4/5 bundle which allows you to use @Cron annotations to configure cron to run your console commands.",
+            "keywords": [
+                "cron",
+                "cronos"
+            ],
+            "support": {
+                "issues": "https://github.com/mybuilder/cronos-bundle/issues",
+                "source": "https://github.com/mybuilder/cronos-bundle/tree/3.1.2"
+            },
+            "time": "2020-09-16T15:43:17+00:00"
         },
         {
             "name": "nikic/php-parser",
