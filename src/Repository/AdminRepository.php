@@ -5,9 +5,13 @@ namespace App\Repository;
 use App\Entity\Admin;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+//use Symfony\Component\Security\Core\Encoder\MigratingPasswordEncoder;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+
+
 
 /**
  * @method Admin|null find($id, $lockMode = null, $lockVersion = null)
@@ -17,9 +21,18 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class AdminRepository extends ServiceEntityRepository implements PasswordUpgraderInterface
 {
-    public function __construct(ManagerRegistry $registry)
+    private $passwordHasher;
+//    private $encoder;
+
+    public function __construct(
+        ManagerRegistry $registry,
+        UserPasswordEncoderInterface $passwordHasher
+//        MigratingPasswordEncoder $encoder
+    )
     {
         parent::__construct($registry, Admin::class);
+        $this->passwordHasher = $passwordHasher;
+//        $this->encoder = $encoder;
     }
 
     /**
@@ -36,32 +49,18 @@ class AdminRepository extends ServiceEntityRepository implements PasswordUpgrade
         $this->_em->flush();
     }
 
-    // /**
-    //  * @return Admin[] Returns an array of Admin objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function createUser($name, $password)
     {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('a.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $user = new Admin();
 
-    /*
-    public function findOneBySomeField($value): ?Admin
-    {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $encoded_password = $this->passwordHasher->encodePassword($user, $password);
+//        $encoded_password = $this->encoder->encodePassword($password, $password);
+
+        $user->setUsername($name);
+        $user->setPassword($encoded_password);
+        $user->setRoles(['ROLE_ADMIN']);
+
+        $this->_em->persist($user);
+        $this->_em->flush();
     }
-    */
 }
