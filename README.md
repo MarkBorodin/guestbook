@@ -74,7 +74,12 @@ symfony open:local:webmail)
 ********
 
 if admin panel does not work:  
-in file vendor/easycorp/easyadmin-bundle/src/Router/AdminUrlGenerator.php  remove annotation of type string in setController() method  
+```
+rm vendor/easycorp/easyadmin-bundle/src/Router/AdminUrlGenerator.php
+cp store/AdminUrlGenerator.php vendor/easycorp/easyadmin-bundle/src/Router
+```
+
+
 The server will run on a free port. The server address will be displayed in the console.
 
 ### Finish
