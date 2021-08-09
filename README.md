@@ -36,7 +36,8 @@ INSERT INTO admin (id, username, roles, password) VALUES
 (username - admin;
 password - 0000)  
 
-Webpack:
+Next, you need to install and configure Webpack.  
+To do this, you need to run all the commands that are listed below:
 ```
 symfony composer req encore
 mv assets/styles/app.css assets/styles/app.scss
@@ -47,7 +48,8 @@ unzip -o guestbook-5.2.zip
 rm guestbook-5.2.zip
 ```
 
-Assembling resources:
+Now, you need to assemble resources and run it in the background mode.  
+To do this, you need to run the following commands:
 ```
 symfony run yarn encore dev
 symfony run -d yarn encore dev --watch
@@ -63,13 +65,15 @@ run async workers:
 symfony run -d --watch=config,src,templates,vendor symfony console messenger:consume async
 ```
 
-run cron:
+run cron to complete cron tasks:
 ```
 php bin/console cronos:replace
 ```
 
-(open web email:
-symfony open:local:webmail)
+(open web email)
+```
+symfony open:local:webmail
+```
 
 ********
 
