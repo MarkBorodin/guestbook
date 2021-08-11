@@ -28,13 +28,12 @@ The next step is to create all the required tables in the database. To do this, 
 bin/console doctrine:migrations:migrate
 ```
 
-In order to get into the admin panel of the site and start working on it, you need to create a super user. Run in in database cnsole:
-```
-INSERT INTO admin (id, username, roles, password) VALUES
-('1', 'admin', '["ROLE_ADMIN"]', '$2y$13$sGq7.8wODT9h8urnWEefJ.ghg2I6mU3duHSpA3AelzHrP4wOVk.aC')
-```
-(username - admin;
-password - 0000)  
+In order to get into the admin panel of the site and start working on it, you need to create a super user. This is done using the following command:
+
+php bin/console app:createsuperuser username password
+(where:
+username - your username;
+password - your password)
 
 Next, you need to install and configure Webpack.  
 To do this, you need to run all the commands that are listed below:

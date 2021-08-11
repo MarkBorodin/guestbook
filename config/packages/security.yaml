@@ -1,7 +1,11 @@
 security:
+#    encoders:
+#        App\Entity\Admin:
+#            algorithm: argon2i
     encoders:
         App\Entity\Admin:
-            algorithm: auto
+            algorithm: sha512
+        argon2i: sha512
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:

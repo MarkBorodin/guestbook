@@ -6,6 +6,7 @@ use App\Entity\Admin;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 //use Symfony\Component\Security\Core\Encoder\MigratingPasswordEncoder;
+use Symfony\Component\Security\Core\Encoder\MigratingPasswordEncoder;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
@@ -54,7 +55,7 @@ class AdminRepository extends ServiceEntityRepository implements PasswordUpgrade
         $user = new Admin();
 
         $encoded_password = $this->passwordHasher->encodePassword($user, $password);
-//        $encoded_password = $this->encoder->encodePassword($password, $password);
+//        $encoded_password = $this->encoder->encodePassword($user, $password);
 
         $user->setUsername($name);
         $user->setPassword($encoded_password);
